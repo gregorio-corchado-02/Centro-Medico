@@ -60,7 +60,23 @@ def guardarmedico():
     flash('Album Agregado Correctamente bro')
     return redirect(url_for('index'))
 
+@app.route('/')
+def index():
+    return render_template('registropaciente.html')
 
+@app.route('/guardarpaciente',methods=['POST'])
+def guardarmedico():
+    if request.method == 'POST':
+        rfc= request.form['txtRFC Médico']
+        nombre= request.form['txtNombre del Paciente']
+        fecha_nacimiento= request.form['txtFecha de Nacimiento']
+        enfermedades= request.form['txtEnfermedades Crónicas']
+        alergias= request.form['txtalergias']
+        antecendetes= request.form['txtAntecedentes']
+        #print(titulo,artista,año)
+        CS = mysql.connection.cursor()
+        CS.execute('insert into admedico(rfc,nombre,fecha_nacimiento,enfermedades,alergias,antecedentes) values(%s,%s,%s,%s,%s,%s)',(rfc,nombre,fecha_nacimiento,enfermedades,alergias,antecendetes))
+        mysql.connection.commit()
 
 @app.route('/eliminar')
 def eliminar():

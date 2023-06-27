@@ -6,7 +6,7 @@
 <body>
   <div class="container">
     <h2>Registro de Paciente</h2>
-    <form>
+    <form action="/guardarpaciente" method="POST">
       <label for="rfc">RFC Médico:</label>
       <input type="text" id="rfc" name="rfc">
 
@@ -29,9 +29,7 @@
       </div>
 
       <div class="buttons-section">
-        <button type="submit">Actualizar</button>
         <button type="submit">Registrar</button>
-        <button type="button">Nueva Consulta</button>
       </div>
     </form>
   </div>

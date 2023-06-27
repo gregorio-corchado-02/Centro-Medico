@@ -43,7 +43,7 @@ def guardarmedico():
 
 
 @app.route('/acualizarmedico',methods=['POST'])
-def guardarmedico():
+def actualizarmedicomedico():
     if request.method == 'POST':
         rfc= request.form['txtrfc']
         nombre= request.form['txtnombre']
@@ -53,7 +53,7 @@ def guardarmedico():
         rol= request.form['txtrol']
         #print(titulo,artista,año)
         CS = mysql.connection.cursor()
-        CS.execute('update admedico set rfcmed = (%s), nombre = (%s),cedula= (%s),correo= (%s),contraseña= (%s),rol= (%s)' )
+        CS.execute('update admedico set nombre = (%s),cedula= (%s),correo= (%s),contraseña= (%s),rol= (%s) where rfcmed=(%s)' )
         mysql.connection.commit()
         
 
